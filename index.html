@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Kumar+One" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+  <script src="js/jquery.js"></script>
+  <script src="js/main.js"></script>
+
+  <title>Tic Tac Toe</title>
+</head>
+
+<body>
+  <div id="game">
+    <!-- <div id ="O">Player O</div>
+   <!-- <div id="X">Player X</div> -->
+
+    <!--
+   <div class ="line"></div>
+     <div class ="sq"></div>
+     <div class ="sq"></div>
+     <div class ="sq"></div>
+   </div>
+
+   <div class ="line"></div>
+     <div class ="sq"></div>
+     <div class ="sq"></div>
+     <div class ="sq"></div>
+   </div>
+
+   <div class ="line"></div>
+     <div class ="sq"></div>
+     <div class ="sq"></div>
+     <div class ="sq"></div>
+   </div> -->
+
+
+    <h2>Tic Tac Toe Game</h2>
+    <!-- import font -->
+    <div id="show">Please enter different names</div>
+    <div id="reply">Please press the play Button only</div>
+    <div id="panel">
+      <input type="text" id="player1" placeholder="Enter player 1">
+      <input type="text" id="player2" placeholder="Enter player 2"><br>
+      <!-- <button id="playButton">Play</button> -->
+      <input type="button" id="playButton" value="Play">
+      <input type="button" id="reset" value="Reset">
+
+      <h1 id="board"></h1>
+      <div class="turn">Player turn: </div>
+      <div class="im">You win</div>
+      <div><img class ="im" src="images/win.gif"  width="400" height="200" alt="win"></div>
+    </div>
+
+    <table class="animated rollIn">
+      <tr class="line">
+        <td class="sq s1" id="0"></td>
+        <td class="sq s2" id="1"></td>
+        <td class="sq s3" id="2"></td>
+      </tr>
+      <tr class="line">
+        <td class="sq s4" id="3"></td>
+        <td class="sq s5" id="4"></td>
+        <td class="sq s6" id="5"></td>
+      </tr>
+      <tr class="line">
+        <td class="sq s7" id="6"></td>
+        <td class="sq s8" id="7"></td>
+        <td class="sq s9" id="8"></td>
+      </tr>
+
+    </table>
+    <div id="results">
+      <p id="p1"> Player 1 Name: <span></span></p>
+      <!-- <span id="v1"></span> -->
+      <p id="s1"> Scores 1st player : <span></span></p>
+      <p id="p2"> Player 2 Name: <span></span></p>
+      <p id="s2"> Scores 2nd player : <span></span></p>
+      <p id="win"> Winner is:  <span></span></p>
+    </div>
+    <div id="playAgain">
+      <p>Would you like to continue the game?</p>
+      <button id= "cont"> Press Here to play again</button>
+    </div>
+
+
+
+  </div>
+</body>
+
+</html>

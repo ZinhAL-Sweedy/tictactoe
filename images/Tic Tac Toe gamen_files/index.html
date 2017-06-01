@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!-- saved from url=(0089)https://s.codepen.io/boomerang/iFrameKey-5be581d9-a692-868c-4bab-b419b5dffe97/index.html# -->
+<html class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js"></script><script src="./events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js"></script><script src="./css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js"></script><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="https://production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico"><link rel="mask-icon" type="" href="https://production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111"><link rel="canonical" href="https://codepen.io/tusharbandal/pen/mdujc/">
+
+<link rel="stylesheet prefetch" href="https://getbootstrap.com/2.3.2/assets/css/bootstrap.css">
+<style class="cp-pen-styles">/*******tic-tac-toe******/
+#tic-tac-toe .disable {text-transform:uppercase; font-size:30px; font-family:Georgia, "Times New Roman", Times, serif}
+#tic-tac-toe #game li {float:left; padding:0; list-style:none; text-align:center; margin-bottom:20px; color:#fff; height:60px; line-height:60px; font-size:40px; color:#ccc}
+#tic-tac-toe #game li.disable{color:#fff}
+#tic-tac-toe #game {float:left; padding:0; clear:both}
+.new_span {width:226px}
+#tic-tac-toe #reset { padding:5px 10px; color:#fff; font-family:Arial, Helvetica, sans-serif; font-size:20px; clear:both; cursor:pointer; float:left; text-align:center; text-transform:uppercase; outline:none; width:204px}
+.input-prepend span.pre_text {width:55px}
+.input-prepend .span1{width:93px}
+.input-prepend {margin-bottom:10px}
+.clr {clear:both; height:0}
+#tic-tac-toe h1 {text-align:center; font-size:28px}
+#tic-tac-toe li::-moz-selection {background:none;color:#000;}
+#tic-tac-toe li::-webkit-selection {background:none;color:#000;}
+#tic-tac-toe {width:220px; margin:0 auto}
+.input-append .win_times {background:#fff; width:101px}
+.input-append .win_text {width:52px}
+/*******tic-tac-toe END******/</style></head><body>
+<div id="tic-tac-toe">
+<div class="span3 new_span">
+<div class="row">
+<h1 class="span3">Tic Tac Toe</h1>
+<div class="span3">
+<div class="input-prepend input-append">
+    <span class="add-on win_text">O won</span><strong id="o_win" class="win_times add-on">0</strong><span class="add-on">time(s)</span>
+    </div>
+    <div class="input-prepend input-append">
+    <span class="add-on win_text">X won</span><strong id="x_win" class="win_times add-on">1</strong><span class="add-on">time(s)</span>
+    </div>
+      
+</div>
+
+
+    
+</div>
+<ul class="row" id="game">
+<li id="one" class="btn span1">+</li>
+<li id="two" class="btn span1">+</li>
+<li id="three" class="btn span1">+</li>
+<li id="four" class="btn span1">+</li>
+<li id="five" class="btn span1">+</li>
+<li id="six" class="btn span1">+</li>
+<li id="seven" class="btn span1">+</li>
+<li id="eight" class="btn span1">+</li>
+<li id="nine" class="btn span1">+</li>
+</ul>
+<div class="clr">&nbsp;</div>
+<div class="row"><a href="https://s.codepen.io/boomerang/iFrameKey-5be581d9-a692-868c-4bab-b419b5dffe97/index.html#" id="reset" class="btn-success btn span3">Restart</a></div></div>
+</div>
+<script src="./stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js"></script><script src="./jquery-1.7.2.min.js"></script>
+<script>// JavaScript Document
+$(document).ready(function() {
+var x = "x"
+var o = "o"
+var count = 0;
+var o_win = 0;
+var x_win = 0;
+$('#game li').click(function(){
+
+  if ($("#one").hasClass('o') && $("#two").hasClass('o') && $("#three").hasClass('o') || $("#four").hasClass('o') && $("#five").hasClass('o') && $("#six").hasClass('o') || $("#seven").hasClass('o') && $("#eight").hasClass('o') && $("#nine").hasClass('o') || $("#one").hasClass('o') && $("#four").hasClass('o') && $("#seven").hasClass('o') || $("#two").hasClass('o') && $("#five").hasClass('o') && $("#eight").hasClass('o') || $("#three").hasClass('o') && $("#six").hasClass('o') && $("#nine").hasClass('o') || $("#one").hasClass('o') && $("#five").hasClass('o') && $("#nine").hasClass('o') || $("#three").hasClass('o') && $("#five").hasClass('o') && $("#seven").hasClass('o'))
+   {
+	 alert('O has won the game. Start a new game')
+	 $("#game li").text("+");
+	$("#game li").removeClass('disable')
+	$("#game li").removeClass('o')
+	$("#game li").removeClass('x')
+	$("#game li").removeClass('btn-primary')
+	$("#game li").removeClass('btn-info')
+   }
+  else if ($("#one").hasClass('x') && $("#two").hasClass('x') && $("#three").hasClass('x') || $("#four").hasClass('x') && $("#five").hasClass('x') && $("#six").hasClass('x') || $("#seven").hasClass('x') && $("#eight").hasClass('x') && $("#nine").hasClass('x') || $("#one").hasClass('x') && $("#four").hasClass('x') && $("#seven").hasClass('x') || $("#two").hasClass('x') && $("#five").hasClass('x') && $("#eight").hasClass('x') || $("#three").hasClass('x') && $("#six").hasClass('x') && $("#nine").hasClass('x') || $("#one").hasClass('x') && $("#five").hasClass('x') && $("#nine").hasClass('x') || $("#three").hasClass('x') && $("#five").hasClass('x') && $("#seven").hasClass('x'))
+  {
+   alert('X wins has won the game. Start a new game')
+   $("#game li").text("+");
+	$("#game li").removeClass('disable')
+	$("#game li").removeClass('o')
+	$("#game li").removeClass('x')
+	$("#game li").removeClass('btn-primary')
+	$("#game li").removeClass('btn-info')	
+  }
+  else if (count == 9)
+  {
+	alert('Its a tie. It will restart.')
+	$("#game li").text("+");
+	$("#game li").removeClass('disable')
+	$("#game li").removeClass('o')
+	$("#game li").removeClass('x')
+	$("#game li").removeClass('btn-primary')
+	$("#game li").removeClass('btn-info')
+	count = 0
+  }
+  else if ($(this).hasClass('disable'))
+  {
+    alert('Already selected')
+  }
+  else if (count%2 == 0)
+  {
+	  count++
+	  $(this).text(o)
+      $(this).addClass('disable o btn-primary')
+	    if ($("#one").hasClass('o') && $("#two").hasClass('o') && $("#three").hasClass('o') || $("#four").hasClass('o') && $("#five").hasClass('o') && $("#six").hasClass('o') || $("#seven").hasClass('o') && $("#eight").hasClass('o') && $("#nine").hasClass('o') || $("#one").hasClass('o') && $("#four").hasClass('o') && $("#seven").hasClass('o') || $("#two").hasClass('o') && $("#five").hasClass('o') && $("#eight").hasClass('o') || $("#three").hasClass('o') && $("#six").hasClass('o') && $("#nine").hasClass('o') || $("#one").hasClass('o') && $("#five").hasClass('o') && $("#nine").hasClass('o') || $("#three").hasClass('o') && $("#five").hasClass('o') && $("#seven").hasClass('o'))
+	    {
+	   alert('O wins')
+	   count = 0
+	   o_win++
+$('#o_win').text(o_win)
+        }
+  }
+   else  
+  {
+	  count++
+    $(this).text(x)
+    $(this).addClass('disable x btn-info')
+	   if ($("#one").hasClass('x') && $("#two").hasClass('x') && $("#three").hasClass('x') || $("#four").hasClass('x') && $("#five").hasClass('x') && $("#six").hasClass('x') || $("#seven").hasClass('x') && $("#eight").hasClass('x') && $("#nine").hasClass('x') || $("#one").hasClass('x') && $("#four").hasClass('x') && $("#seven").hasClass('x') || $("#two").hasClass('x') && $("#five").hasClass('x') && $("#eight").hasClass('x') || $("#three").hasClass('x') && $("#six").hasClass('x') && $("#nine").hasClass('x') || $("#one").hasClass('x') && $("#five").hasClass('x') && $("#nine").hasClass('x') || $("#three").hasClass('x') && $("#five").hasClass('x') && $("#seven").hasClass('x'))
+        {
+	 alert('X wins')
+	 count = 0
+	 x_win++
+	 $('#x_win').text(x_win)
+        }
+  }
+
+   });
+    $("#reset").click(function () {
+    $("#game li").text("+");
+	$("#game li").removeClass('disable')
+	$("#game li").removeClass('o')
+	$("#game li").removeClass('x')
+	$("#game li").removeClass('btn-primary')
+	$("#game li").removeClass('btn-info')
+	count = 0
+
+  });
+});
+
+
+//# sourceURL=pen.js
+</script>
+</body></html>

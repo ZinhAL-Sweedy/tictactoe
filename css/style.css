@@ -1,0 +1,240 @@
+body{
+  margin:0 auto;
+  /*background-color: #3aa3e0;*/
+  background-image: url("../images/bg.jpg");
+
+  /*#3a5ee0*/
+  font-family: 'Kumar One', cursive;
+}
+.im{
+  display: none;
+  text-align:center;
+  margin-left: 5px;
+}
+h2{
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 35px;
+}
+img{
+  margin-left: 18px;
+}
+#reply{
+  display: none;
+}
+
+table {
+  /*border-collaps: ;e: collapse;*/
+  /*text-align: center;*/
+  width: 79.8vh;
+  /*background-color: pink;*/
+  /*margin: 60px auto;*/
+  /*height: 5vh;*/
+  /*padding-top: 60px;*/
+  margin-left:-25px;
+  background-image: url("../images/tb.jpg");
+  /*border: 0.2px dashed  white;*/
+
+}
+td{
+  background-color: #ed57db;
+  /*border-collapse: collapse;*/
+  border: 1px solid #74a1e0;
+  /*cursor:pointer;*/
+  text-align: center;
+ /*padding-top:60px;*/
+ padding-top: 50px;
+}
+.x{
+  background-color: purple !important;
+}
+.o{
+  background-color: blue !important;
+}
+#game {
+  /*background-color: blue;*/
+  width:360px;
+  margin:0 auto;
+}
+
+.line {
+  /*border:1px solid blue;*/
+  /*background-color: green;*/
+  clear: both;
+  overflow: hidden;
+}
+
+.sq {
+  float:left;
+  background-color: #5C6CFA;
+  height:80px;
+  width: 136.8px;
+  text-align: center;
+  border: 2px dashed white;
+  font-size: 30px;
+}
+
+#palyer1{
+  margin-top: 10px;
+  margin-left: 30px;
+}
+#player2{
+  margin-top: 10px;
+  margin-left: 80px;
+}
+#reset{
+  /*background-color: grey;*/
+  margin-left: 30px;
+  text-align: center;
+  margin-top: 10px;
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 15px 29px;
+  text-align: center;
+  text-decoration: none;
+  /*display: inline-block;*/
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 40px;
+  cursor: pointer;
+
+
+  /*margin-right: 200px;*/
+}
+#playButton{
+  /*background-color: grey;*/
+  margin-left: 35px;
+  text-align: center;
+  margin-top: 10px;
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 50px;
+  cursor: pointer;
+
+
+  /*margin-right: 200px;*/
+}
+
+#playButton:active{
+    background-color:green;
+}
+/*#playButton{
+  background-color: blue;
+  border: none;
+  color: white;
+  /*padding: 15px 32px;*/
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  /*margin: 4px 2px;*/
+  cursor: pointer;
+}*/
+#reset{
+  background-color: rgb(199, 133, 234);
+  border: none;
+  color: white;
+  /*padding: 15px 32px;*/
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  /*margin: 4px 2px;*/
+  cursor: pointer;
+
+}
+#playButton:hover{
+    background-color: pink;
+    border:1px solid black;
+    border: none;
+    color: white;
+    /*padding: 15px 32px;*/
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    /*margin: 4px 2px;*/
+    cursor: pointer;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    /*margin-left: 110px;*/
+    text-align: center;
+    /*margin-top: 10px;*/
+}
+#reset:hover {
+  background-color: pink;
+  border: none;
+  color: white;
+  /*padding: 15px 32px;*/
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  /*margin: 4px 2px;*/
+  cursor: pointer;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  /*margin-left: 110px;*/
+  text-align: center;
+  /*margin-top: 10px;*/
+}
+/*#reset:focus{
+    background-color:green;
+}
+
+#reset:active{
+  background-color:green;
+}*/
+input{
+  text-align: center;
+}
+#results{
+  width:50%;
+  height: 200px;
+  background-color: #39398F;
+  margin-left: 600px;
+  margin-top: -400px;
+}
+
+#playAgain{
+  display: none;
+
+  margin-left:600px;
+  background-color:#74a1e0;
+  margin-top: -360px;
+  width:180px;
+  text-align:center;
+}
+#show{
+  text-align: center;
+}
+p{
+  font-size: 10px;
+  padding-left: 5px;
+  padding-top: 5px;
+  background-color: #39398F;
+
+}
+span{
+  font-size: 10px;
+}
+
+/*.overlay {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background-color: #008CBA;
+  overflow: hidden;
+  width: 100%;
+  height:0;
+  transition: .5s ease;
+}*/
