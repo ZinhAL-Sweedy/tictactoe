@@ -10,6 +10,7 @@ body{
   display: none;
   text-align:center;
   margin-left: 5px;
+  border-radius: 1px dashed red;
 }
 h2{
   text-align: center;
@@ -24,7 +25,7 @@ img{
 }
 
 table {
-  /*border-collaps: ;e: collapse;*/
+  /*border-collaps:;e: collapse;*/
   /*text-align: center;*/
   width: 79.8vh;
   /*background-color: pink;*/
@@ -32,9 +33,7 @@ table {
   /*height: 5vh;*/
   /*padding-top: 60px;*/
   margin-left:-25px;
-  
   /*border: 0.2px dashed  white;*/
-
 }
 td{
   background-color: #ed57db;
@@ -46,17 +45,28 @@ td{
  padding-top: 50px;
 }
 .x{
-  background-color: purple !important;
+  /*background-color: purple !important;*/
+  background-image: url("../images/p4.jpeg");
+  background-size: 138px 130px;
+  background-repeat: no-repeat;
+
 }
 .o{
-  background-color: blue !important;
+  /*background-color: blue !important;*/
+  background-image: url("../images/p2.jpeg");
+  background-size: 138px 130px;
+  background-repeat: no-repeat;
+
 }
 #game {
   /*background-color: blue;*/
   width:360px;
   margin:0 auto;
 }
-
+#turn{
+  display: none;
+  text-align: center;
+}
 .line {
   /*border:1px solid blue;*/
   /*background-color: green;*/
@@ -70,7 +80,7 @@ td{
   height:80px;
   width: 136.8px;
   text-align: center;
-  border: 2px dashed white;
+  border: 2px dashed black;
   font-size: 30px;
 }
 
@@ -202,6 +212,8 @@ input{
   background-color: #39398F;
   margin-left: 600px;
   margin-top: -400px;
+  border: 1px dashed red;
+  text-decoration: underline;
 }
 
 #playAgain{

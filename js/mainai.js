@@ -1,3 +1,54 @@
+var playerTurn = "X";
+var computerTurn = "O";
+
+//FUNCTION CREATE RANDOM NUMBER
+function randomNumber() {
+  console.log(Math.floor(Math.random() * 8))
+  return Math.floor(Math.random() * 8);
+} //end of function
+
+//FUNCTION TO SET A WIN LINE
+
+
+    if ( === "X" || buttons[counter].innerHTML === "O") {
+     console.log(buttons[counter].innerHTML)
+      console.log("has an X or Y")
+      counter += 1;
+    }
+    else {
+      console.log("there is nothing there")
+      return;
+    }
+      
+    // START AI
+    for (i=0; i < 10; i++) {
+  var random = randomNumber();
+if (buttons[random].innerHTML === "X" || buttons[random].innerHTML === "O") {
+  continue;
+}
+  else {
+   buttons[random].innerHTML = computerTurn;
+   break;
+  }
+} //end of AI
+    }//end of else
+
+
+  // RUN FUNCTIONS FOR X AND O PARAMETERS
+  win(playerTurn);
+  win(computerTurn);
+
+  if (!win("X") || !win("O")) {
+  draw();
+    }
+
+}); //End of game click handler
+
+
+
+
+
+
 // check if the load save is supportted in browser
 var canSave = false;
 if (typeof(Storage) !== "undefined") {

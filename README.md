@@ -1,7 +1,23 @@
 
-# Top Heading
+# Tic Tac toe
+### My heading one is the main heading using import fonts from google fonts websites.
+### also this fonts is applied to the whole website
+### I linked my project to two different liberires for example jQuery, and animation
 
-Here is some normal text
+
+
+### I tried to use the most properties of the jQuery language
+
+
+## the background is url
+
+###
+
+## I used the fadeIn fadeOut
+#### position is hidden
+#### show and hide paragraphs in certian times
+#### using load Storage
+#### I did not get more time to work with ai other to make my game play with computer
 ##Smaller Heading
 ### Even Smaller Heading
 
