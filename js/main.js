@@ -120,7 +120,7 @@ $(document).ready(function(){
       $("div #turn").hide();
 
       $( "div.im" ).fadeIn( 300 ).delay( 1500 ).fadeOut( 400 );
-      $( "div img.im" ).fadeIn( 300 ).delay( 2000 ).fadeOut( 400 );
+      // $( "div img.im" ).fadeIn( 300 ).delay( 2000 ).fadeOut( 400 );
       // add scores to the winner
       if (player ==="x"){
         winX++;
@@ -147,9 +147,9 @@ $(document).ready(function(){
       localStorage.setItem( 'players', JSON.stringify(players) );
     }
   // check DRAW
-  }else if(turnCount === 8){// if( checkPlayer() )
+  } else if(turnCount === 8){// if( checkPlayer() )
       $('#win span').html("DRAW!");
-     }// else
+  }// else
      // change player
     if(player === "x"){
       player = "o";

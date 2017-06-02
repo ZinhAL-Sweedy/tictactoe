@@ -7,7 +7,7 @@ if (typeof(Storage) !== "undefined") {
 // global variablies
 var board = [null, null, null, null, null, null, null, null, null];
 
-
+var stillEmpty = [0,1,2,3,4,5,6,7,8];
 
 var wins= [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
 
@@ -62,26 +62,11 @@ var checkPlayer = function(){
 if( canSave ){
   localStorage.setItem( 'players', JSON.stringify(players) );
 }
+
 // check DRAW
 if(turnCount === 8){// if( checkPlayer() )
   $('#win span').html("DRAW!");
 }
-//
-// // change player
-// if(player === "x"){
-//   player = "o";
-//   $("div#turn").html("Player turn: " + players[player].name);
-// } else{
-//   player = "x";
-//   $("div#turn").html("Player turn: " + players[player].name);
-// }
-//
-// turnCount += 1;// number of clicks in the board game
-
-// CHANGE DEFAULT WITH BUTTONS
-
-// ADD EVENT HANDLER TO GRID BUTTON CLICK
-
 // IF TRY AND CLICK ON ALREADY CLICKED, GIVE MESSAGE
 if ($(this).text() === "X" || $(this).text() === "O") {
   alert("Already clicked, choose another box");
@@ -106,54 +91,77 @@ $(document).ready(function(){
 
     var boardIndex = parseInt( this.id );
     // var value_input = $("input[name*='xxxx']").val();
+
     select.addClass(player.toLowerCase()).text(players[player].name);
     // change cell content her
     board[boardIndex]= player.toLowerCase();
+
+    // this.id = 4
+        // indexes:  0,1,2
+    // stillEmpty = [0,1,2,3,5,6,7,8];
+
+    var notEmptyIndex = stillEmpty.indexOf( this.id );
+    stillEmpty[notEmptyIndex]= null;
+
+    // stillEmpty.splice(notEmptyIndex,1);
     // $(this).text(players[player].name);
     // check the winner
-    if (checkPlayer()){
-      // someone won the game!
-      $('#win span').html(players[player].name);
-      $("div #turn").hide();
+    // checkPlayer();
 
-      $( "div.im" ).fadeIn( 300 ).delay( 1500 ).fadeOut( 400 );
-      $( "div img.im" ).fadeIn( 300 ).delay( 2000 ).fadeOut( 400 );
-      // add scores to the winner
-      if (player ==="x"){
-        winX++;
-        players[player].score=winX;
-        $("#s1 span").html(players[player].score);
-        // $("#s2 span").html(players[player].score);
-        console.log("Your record of scores is "+ players[player].name);
-        $("#playAgain").show();
-        gameStart = false;
-      }else{
-        winO++;
-        players[player].score=winO;
-        $("#s2 span").html( players[player].score );
-        // $("#s1 span").html(players[player].score);
-        console.log("Your record of scores is "+ winO);
-        // alert("Your record of scores is "+ players[player].score);
-        $("#playAgain").show();
-        // $('#playButton').prop('disabled', false);
-        gameStart = false;
-        // return;
-       }
-    }// checkPlayer() set the info in database
+    // if (checkPlayer()){
+    //   // someone won the game!
+    //   $('#win span').html(players[player].name);
+    //   $("div #turn").hide();
+    //
+    //   $( "div.im" ).fadeIn( 300 ).delay( 1500 ).fadeOut( 400 );
+    //   $( "div img.im" ).fadeIn( 300 ).delay( 2000 ).fadeOut( 400 );
+    //   // add scores to the winner
+    //   if (player ==="x"){
+    //     winX++;
+    //     players[player].score=winX;
+    //     $("#s1 span").html(players[player].score);
+    //     // $("#s2 span").html(players[player].score);
+    //     console.log("Your record of scores is "+ players[player].name);
+    //     $("#playAgain").show();
+    //     gameStart = false;
+    //   }else{
+    //     winO++;
+    //     players[player].score=winO;
+    //     $("#s2 span").html( players[player].score );
+    //     // $("#s1 span").html(players[player].score);
+    //     console.log("Your record of scores is "+ winO);
+    //     // alert("Your record of scores is "+ players[player].score);
+    //     $("#playAgain").show();
+    //     // $('#playButton').prop('disabled', false);
+    //     gameStart = false;
+    //     // return;
+    //    }
+    // }// checkPlayer() set the info in database
 
-    turnCount += 1
+    turnCount += 1;
 
     // AI TURN
     for (i=0; i < 9; i++) {
       var random = randomNumber();
-      if(board[random] === null) {
+      if ( board[random] === null ) {
         board[random] = 'o';
-
         $('#' + random).addClass('o').text('AI');
-
         break;
       }
+
     } //end of AI
+
+
+    // for (i=0; i < 9; i++) {
+    //   var random = randomNumber();
+    //   if(board[random] === null) {
+    //     board[random] = 'o';
+    //
+    //     $('#' + random).addClass('o').text('AI');
+    //
+    //     break;
+    //   }
+    // } //end of AI
 
     turnCount += 1;
 
@@ -170,6 +178,42 @@ $(document).ready(function(){
 
 
   }); // $('.sq').on('click')
+  //checkPlayer
+
+  // checkPlayer
+  var check = function(){
+    // someone won the game!
+    checkPlayer();
+    if (checkPlayer){
+    $('#win span').html(players[player].name);
+    $("div #turn").hide();
+
+    $( "div.im" ).fadeIn( 300 ).delay( 1500 ).fadeOut( 400 );
+    $( "div img.im" ).fadeIn( 300 ).delay( 2000 ).fadeOut( 400 );
+    // add scores to the winner
+    if (player ==="x"){
+      winX++;
+      players[player].score=winX;
+      $("#s1 span").html(players[player].score);
+      // $("#s2 span").html(players[player].score);
+      console.log("Your record of scores is "+ players[player].name);
+      $("#playAgain").show();
+      gameStart = false;
+    }else{
+      winO++;
+      players[player].score=winO;
+      $("#s2 span").html( players[player].score );
+      // $("#s1 span").html(players[player].score);
+      console.log("Your record of scores is "+ winO);
+      // alert("Your record of scores is "+ players[player].score);
+      $("#playAgain").show();
+      // $('#playButton').prop('disabled', false);
+      gameStart = false;
+      // return;
+     }
+   }
+  }// checkPlayer() set the info in database
+
 
   // show text of the names at the begining for some time and fade out
   $( "div#show" ).fadeIn( 300 ).delay( 1500 ).fadeOut( 1000 );
@@ -222,6 +266,7 @@ $(document).ready(function(){
     $("#p2 span").html(  $("#player2").val()   );
     $("#s1 span").html("0");
     $("#s2 span").html("0");
+    // checkPlayer();
   });
 
   // reset function

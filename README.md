@@ -11,14 +11,20 @@
 
 ## the background is url
 
-###
+### using AI by generating a random number
 
 ## I used the fadeIn fadeOut
 #### position is hidden
 #### show and hide paragraphs in certian times
 #### using load Storage
-#### I did not get more time to work with ai other to make my game play with computer
-##Smaller Heading
+#### I did  get short time to work with ai other to make my game play with computer
+### Whish List
+- Players chooser his images
+- refactor my
+- add more functionaltyxxx
+
+```
+
 ### Even Smaller Heading
 
 
