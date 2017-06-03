@@ -1,5 +1,6 @@
 
 # Tic Tac toe
+#link
 ### My heading one is the main heading using import fonts from google fonts websites.
 ### also this fonts is applied to the whole website
 ### I linked my project to two different liberires for example jQuery, and animation
@@ -21,31 +22,7 @@
 ### Whish List
 - Players chooser his images
 - refactor my
-- add more functionaltyxxx
-
-```
-
-### Even Smaller Heading
-
-
-Here is [my live site](http://fillmurray.com)
-
-![fill murray](http://fillmurray.com/400/300)
-
-
-Here is _italicised text_.
-
-Here is __b=bold text__.
-
-- first item
-- second item
-
-
-```javascript
-var bill = 'murray';
-```
-
-__________
-
-
-dscdkhvdhgbdh vbhdb hdd
+- add more functionalty
+- add 4*4
+- finish AI after AI and I just need to figure all the steps of the computer moves
+- add music

@@ -7,8 +7,6 @@ if (typeof(Storage) !== "undefined") {
 // global variablies
 var board = [null, null, null, null, null, null, null, null, null];
 
-
-
 var wins= [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
 
 var players = {
@@ -38,6 +36,40 @@ var turnCount = 0;
 // var buttons = document.getElementById("board");
 //     console.log(buttons);
 
+
+// function to make a good move for the AI
+var playAIMove  = function () {
+  // play in on of these squares if they are free
+  if ($('#4').text() === '') {
+    $('#' + 4).addClass('o').text('AI');
+    board[4]= 'o';
+  } else if ($('#0').text()==='') {
+    $('#' + 0).addClass('o').text('AI');
+    board[0]= 'o';
+  } else if ($('#2').text()==='') {
+    $('#' + 2).addClass('o').text('AI');
+    board[2]= 'o';
+  } else if ($('#6').text()==='') {
+    $('#' + 6).addClass('o').text('AI');
+    board[6]= 'o';
+  } else if ($('#8').text()==='') {
+    $('#' + 8).addClass('o').text('AI');
+    board[8]= 'o';
+  } else if ($('#1').text()==='') {
+    $('#' + 1).addClass('o').text('AI');
+    board[1]= 'o';
+  } else if ($('#3').text()==='') {
+    $('#' + 3).addClass('o').text('AI');
+    board[3]= 'o';
+  } else if ($('#5').text()==='') {
+    $('#' + 5).addClass('o').text('AI');
+    board[5]= 'o';
+  } else if ($('#7').text()==='') {
+    $('#' + 7).addClass('o').text('AI');
+    board[7]= 'o';
+  }
+};
+
 //FUNCTION CREATE RANDOM NUMBER
 function randomNumber() {
   console.log(Math.floor(Math.random() * 8))
@@ -45,42 +77,28 @@ function randomNumber() {
 } //end of function
 
 //FUNCTION TO SET A WIN LINE
-
 var checkPlayer = function(){
   var current=0;
-  console.log('checkPlayer', wins);
+  // console.log('checkPlayer', wins);
   for (var i = 0; i < wins.length; i++) {
     var winState = wins[i];
-    console.log('winState:', winState);
+    // console.log('winState:', winState);
     if( board[ winState[0] ] === player && board[ winState[1] ] === player && board[ winState[2] ] === player){
       return true;
     }//if
   }//for
-};//func
+  return false;
+}; // end checkPlayer()
+
 // /cell checks if have event addClass for it
 
 if( canSave ){
   localStorage.setItem( 'players', JSON.stringify(players) );
 }
 // check DRAW
-if(turnCount === 8){// if( checkPlayer() )
-  $('#win span').html("DRAW!");
-}
-//
-// // change player
-// if(player === "x"){
-//   player = "o";
-//   $("div#turn").html("Player turn: " + players[player].name);
-// } else{
-//   player = "x";
-//   $("div#turn").html("Player turn: " + players[player].name);
+// if(turnCount === 8){// if( checkPlayer() )
+//   $('#win span').html("DRAW!");
 // }
-//
-// turnCount += 1;// number of clicks in the board game
-
-// CHANGE DEFAULT WITH BUTTONS
-
-// ADD EVENT HANDLER TO GRID BUTTON CLICK
 
 // IF TRY AND CLICK ON ALREADY CLICKED, GIVE MESSAGE
 if ($(this).text() === "X" || $(this).text() === "O") {
@@ -111,63 +129,136 @@ $(document).ready(function(){
     board[boardIndex]= player.toLowerCase();
     // $(this).text(players[player].name);
     // check the winner
+    turnCount += 1
+    console.log(turnCount);
+    // check if HUMAN player (always 'x') has won
+    if (checkPlayer()){
+      $('#win span').html(players[player].name);
+      $("div #turn").hide();
+
+      $('#wins').html( players[player].name ).show();
+
+      $( "div.im" ).fadeIn( 300 ).delay( 1500 ).fadeOut( 400 );
+      $( "div img.im" ).fadeIn( 300 ).delay( 2000 ).fadeOut( 400 );
+      // add scores to the winner
+      // if (player ==="x"){
+
+      winX++;
+      players[player].score=winX;
+      $("#s1 span").html(players[player].score);
+      // $("#s2 span").html(players[player].score);
+      console.log("Your record of scores is "+ players[player].name);
+      $("#playAgain").show();
+      gameStart = false;
+
+      // }
+      // else {
+      //   winO++;
+      //   players[player].score=winO;
+      //   $("#s2 span").html( players[player].score );
+      //   // $("#s1 span").html(players[player].score);
+      //   console.log("Your record of scores is "+ winO);
+      //
+      //   $("#playAgain").show();
+      //   // $('#playButton').prop('disabled', false);
+      //   gameStart = false;
+      // }
+      return;  // don't let AI have a turn if the human won!
+    }
+    //
+
+    player = 'o';
+    // // change player
+    // if(player === "x"){
+    //  player = "o";
+    //  $("div#turn").html("Player turn: " + players[player].name);
+    // } else{
+    //  player = "x";
+    //  $("div#turn").html("Player turn: " + players[player].name);
+    // }
+
+
+    // AI TURN
+    playAIMove();
+
+    // for (i=0; i < 9; i++) {
+    //   var random = randomNumber();
+    //   if(board[random] === null) {
+    //     board[random] = 'o';
+    //
+    //     if ($('#4').text()==='') {
+    //       // $('#4').text(#random);
+    //       $('#' + random).addClass('o').text('AI');
+    //     } else if ($('#0').text()==='') {
+    //       // $('#0').text(#random);
+    //       $('#' + random).addClass('o').text('AI');
+    //     }
+    //     else if ($('#2').text()==='') {
+    //       // $('#2').text(#random);
+    //       $('#' + random).addClass('o').text('AI');
+    //     } else if ($('#3').text()==='') {
+    //       // $('#3').text(#random);
+    //       $('#' + random).addClass('o').text('AI');
+    //     }
+    //     else if ($('#5').text()==='') {
+    //       // $('#5').text(#random);
+    //       $('#' + random).addClass('o').text('AI');
+    //     } else if ($('#6').text()==='') {
+    //       // $('#6').text(#random);
+    //       $('#' + random).addClass('o').text('AI');
+    //     }
+    //    else if ($('#8').text()==='') {
+    //       // $('#8').text(#random);
+    //       $('#' + random).addClass('o').text('AI');
+    //     }//else
+    //   break;
+    //   }
+    // } //end of AI
+
+
+    // check if AI won
     if (checkPlayer()){
       // someone won the game!
       $('#win span').html(players[player].name);
+      $('#wins').html( players[player].name ).show();
       $("div #turn").hide();
 
       $( "div.im" ).fadeIn( 300 ).delay( 1500 ).fadeOut( 400 );
       $( "div img.im" ).fadeIn( 300 ).delay( 2000 ).fadeOut( 400 );
       // add scores to the winner
-      if (player ==="x"){
-        winX++;
-        players[player].score=winX;
-        $("#s1 span").html(players[player].score);
-        // $("#s2 span").html(players[player].score);
-        console.log("Your record of scores is "+ players[player].name);
-        $("#playAgain").show();
-        gameStart = false;
-      }else{
-        winO++;
-        players[player].score=winO;
-        $("#s2 span").html( players[player].score );
-        // $("#s1 span").html(players[player].score);
-        console.log("Your record of scores is "+ winO);
-        // alert("Your record of scores is "+ players[player].score);
-        $("#playAgain").show();
-        // $('#playButton').prop('disabled', false);
-        gameStart = false;
-        // return;
-       }
-    }// checkPlayer() set the info in database
+      // if (player ==="x"){
+      //   winX++;
+      //   players[player].score=winX;
+      //   $("#s1 span").html(players[player].score);
+      //   // $("#s2 span").html(players[player].score);
+      //   console.log("Your record of scores is "+ players[player].name);
+      //   $("#playAgain").show();
+      //   gameStart = false;
+      // }else{//
 
-    turnCount += 1
+      winO++;
+      players[player].score=winO;
+      $('#win span').text("AI");
+      ("#wins").show();
+      $('#div wins').html ( $("#win").val());
+      $("#s2 span").html( players[player].score );
+      // $("#s1 span").html(players[player].score);
+      console.log("Your record of scores is "+ winO);
 
-    // AI TURN
-    for (i=0; i < 9; i++) {
-      var random = randomNumber();
-      if(board[random] === null) {
-        board[random] = 'o';
+      $("#playAgain").show();
+      // $('#playButton').prop('disabled', false);
+      gameStart = false;
 
-        $('#' + random).addClass('o').text('AI');
+      //  }
+      return;
 
-        break;
-      }
-    } //end of AI
+    } else if(turnCount === 9){        // if( checkPlayer() )
+      $('#win span').html("DRAW!");
+    }
 
     turnCount += 1;
-
-    // if(player === "x"){
-    //   player = "o";
-    //   $("div#turn").html("Player turn: " + players[player].name);
-    //
-    // } else{
-    //   player = "x";
-    //   $("div#turn").html("Player turn: " + players[player].name);
-    //
-    // }
-    // turnCount += 1;// number of clicks in the board game
-
+    console.log(turnCount);
+    player = 'x'; // change back to HUMAN player because it is their turn again, after the AI is finished
 
   }); // $('.sq').on('click')
 
@@ -199,6 +290,7 @@ $(document).ready(function(){
 
 // function playButton
   $('#playButton').on('click',function (event) {
+    turnCount = 0;
     console.log('PLAY clicked!');
     $("div#turn").show();
     $("div#turn").html("Player turn: " + $("#player1").val());
@@ -233,6 +325,10 @@ $(document).ready(function(){
     $("#player1").val("");
     $("#player2").val("");
     // $("#turn").val("");
+    turnCount = 0;
+
+    player  = 'x';
+
     $("#turn").hide();
     players.x.name = '';
     players.o.name = '';

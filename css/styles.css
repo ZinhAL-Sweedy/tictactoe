@@ -1,8 +1,7 @@
 body{
   margin:0 auto;
   /*background-color: #3aa3e0;*/
-  background: url("../images/bg.jpg") no-repeat center center fixed;
-  background-size: cover;
+  background-image: url("../images/bg.jpg");
 
   /*#3a5ee0*/
   font-family: 'Kumar One', cursive;
@@ -23,42 +22,6 @@ img{
 }
 #reply{
   display: none;
-}
-#wins{
-  display: none;
-  width: 40%;
-  height: 40%;
-  background-color: black;
-  position: absolute;
-  color: red;
-  top:0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  text-align: center;
-  line-height: 200%;
-  -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
-  -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
-  animation-name: example;
-  animation-duration: 4s;
-}
-/* Safari 4.0 - 8.0 */
-@-webkit-keyframes example {
-    0%   {background-color:red; left:0px; top:0px;}
-    25%  {background-color:yellow; left:200px; top:0px;}
-    50%  {background-color:blue; left:200px; top:200px;}
-    75%  {background-color:green; left:0px; top:200px;}
-    100% {background-color:red; left:0px; top:0px;}
-}
-
-/* Standard syntax */
-@keyframes example {
-    0%   {background-color:red; left:0px; top:0px;}
-    25%  {background-color:yellow; left:200px; top:0px;}
-    50%  {background-color:blue; left:200px; top:200px;}
-    75%  {background-color:green; left:0px; top:200px;}
-    100% {background-color:red; left:0px; top:0px;}
 }
 
 table {
@@ -245,15 +208,19 @@ input{
   text-align: center;
 }
 #results{
-  width:50%;
-  height: 200px;
+  width:70%;
+  height: 425px;
   background-color: #39398F;
-  margin-left: 600px;
-  margin-top: -400px;
+  margin-left: -850px;
+  margin-top: -415px;
   border: 1px dashed red;
   text-decoration: underline;
 }
-
+#showPic{
+  width:700%;
+  height:100%;
+  display:inline-block;
+}
 #playAgain{
   display: none;
 
