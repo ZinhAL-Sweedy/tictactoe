@@ -123,6 +123,28 @@ if ($(this).text() === "X" || $(this).text() === "O") {
 }
 
 $(document).ready(function(){
+  // $("button #tog").on ('click',function(){
+  //   $("p").toggle( "slow" );
+  //
+  // });
+//   $("button #btn").click(function(){
+//     $("p #4").toggle();
+// });
+// $("button #btn").click(function(){
+  $('#fr').on('click',function(){
+    $("#se").toggle();// main.js
+    $(".s").toggle();//vs computer done need to connect them help
+  });
+  $('#se').on('click',function(){
+    $("#fr").toggle();//not designed yet
+    $(".s").toggle();//not designet yet
+  });
+  $('#t').on('click',function() {
+    // multiple players
+  });
+  $('#v').on('click',function() {
+    // AI 
+  });
 
   $('.sq').on('click',function(event){
 
@@ -362,6 +384,7 @@ $(document).ready(function(){
     //   'background-size': ""
     // });
     $('td').css('background','');
+    $(".s").hide();
     // players.o.image = null;
     gameStart = false;
     $('#playButton').prop('disabled', false);

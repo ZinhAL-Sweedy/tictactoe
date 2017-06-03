@@ -23,15 +23,21 @@ h2{
   height: auto;
 }
 img{
-  /*margin-left: 50px;*/
-  /*display: inline;*/
+  margin-left: -70px;
+  padding-right: 75px;
   width:78px;
   height:70px;
-  border:1px dashed red;
+  /*border:1px dashed red;*/
 
 }
 #reply{
   display: none;
+}
+#togle{
+  margin-left: -500px;
+  margin-top: -410px;
+  width:50%;
+  color:#blueviolet;
 }
 #wins{
   display: none;
@@ -69,7 +75,9 @@ img{
     75%  {background-color:green; left:0px; top:200px;}
     100% {background-color:red; left:0px; top:0px;}
 }
-
+.s{
+  display:none;
+}
 table {
   /*border-collaps:;e: collapse;*/
   /*text-align: center;*/
@@ -78,7 +86,8 @@ table {
   /*margin: 60px auto;*/
   /*height: 5vh;*/
   /*padding-top: 60px;*/
-  margin-left:-25px;
+  margin-left:-45px;
+  margin-top: -60px;
   /*border: 0.2px dashed  white;*/
 }
 td{
@@ -141,7 +150,7 @@ td{
 }
 #reset{
   /*background-color: grey;*/
-  margin-left: 30px;
+  /*margin-left: 30px;*/
   text-align: center;
   margin-top: 10px;
   background-color: blue;
@@ -154,7 +163,7 @@ td{
   font-size: 16px;
   margin-top: 20px;
   margin-bottom: 20px;
-  margin-left: 40px;
+  margin-left: -500px;
   cursor: pointer;
 
 
