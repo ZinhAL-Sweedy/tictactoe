@@ -7,7 +7,7 @@ if (typeof(Storage) !== "undefined") {
 var board = [null, null, null, null, null, null, null, null, null];
 
 var wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-var images = [];
+// var images = [];
 
 
 var players = {
@@ -71,8 +71,8 @@ $(document).ready(function(){
     $("#s2 span").html( players[player].score );
 
   });//ev
-// function playButton
 
+// function playButton\
   $('#playButton').on('click',function (event) {
     console.log('PLAY clicked!');
     // $("div#turn").show();
@@ -82,15 +82,16 @@ $(document).ready(function(){
     //
     //     images.push[]
     // }"../images/img3.jpeg","../images/p2jpeg.","../images/p4.jpeg"
-    for (var i = 0; i < images.length; i++) {
-      images.push("images/p2.jpeg");//"images/p4.jpeg"
-      console.log(images[i]);
+    // for (var i = 0; i < images.length; i++) {
+    //   images.push("images/p2.jpeg");//"images/p4.jpeg"
+    //   console.log(images[i]);
 
     }
     // players['x'].name  = $("#player1").val();// put palyer1 and palyer2 as fixed text
     // players['o'].name  = $("#player2").val();
-    player['x'].name =
+    // player['x'].name =
     // debugger;
+
     // if (players['x'].name==='' || players['o'].name ===''){
     //   $( "div#show" ).fadeIn( 300 ).delay( 1500 ).fadeOut( 400 );
     //   return;
@@ -132,7 +133,6 @@ $(document).ready(function(){
       // someone won the game!
       $('#win span').html(players[player].name);
       $("div #turn").hide();
-
       $( "div.im" ).fadeIn( 300 ).delay( 1500 ).fadeOut( 400 );
       // $( "div img.im" ).fadeIn( 300 ).delay( 2000 ).fadeOut( 400 );
       // add scores to the winner

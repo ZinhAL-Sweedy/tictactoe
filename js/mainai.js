@@ -13,12 +13,14 @@ var players = {
 
   x: {
     name: '',
-    score: 0
+    score: 0,
+    image:''
   },
 
   o: {
     name: '',
-    score: 0
+    score: 0,
+    image:''
   }
 
 };
@@ -38,6 +40,7 @@ var turnCount = 0;
 
 
 // function to make a good move for the AI
+debugger;
 var playAIMove  = function () {
   // play in on of these squares if they are free
   if ($('#4').text() === '') {
@@ -124,7 +127,15 @@ $(document).ready(function(){
 
     var boardIndex = parseInt( this.id );
     // var value_input = $("input[name*='xxxx']").val();
-    select.addClass(player.toLowerCase()).text(players[player].name);
+
+    // select.addClass(player.toLowerCase()).text(players[player].name);
+
+    $(this).css({
+      'background': 'url(' + players[player].image + ') no-repeat',
+      'background-size': 'cover'
+    });
+    console.log(players[player].image, $(this).css('background-image') );
+
     // change cell content her
     board[boardIndex]= player.toLowerCase();
     // $(this).text(players[player].name);
@@ -135,11 +146,9 @@ $(document).ready(function(){
     if (checkPlayer()){
       $('#win span').html(players[player].name);
       $("div #turn").hide();
-
-      $('#wins').html( players[player].name ).show();
-
-      $( "div.im" ).fadeIn( 300 ).delay( 1500 ).fadeOut( 400 );
-      $( "div img.im" ).fadeIn( 300 ).delay( 2000 ).fadeOut( 400 );
+      // $('#wins').html( players[player].name ).show();
+      // $( "div.im" ).fadeIn( 300 ).delay( 1500 ).fadeOut( 400 );
+      // $( "div img.im" ).fadeIn( 300 ).delay( 2000 ).fadeOut( 400 );
       // add scores to the winner
       // if (player ==="x"){
 
@@ -165,7 +174,6 @@ $(document).ready(function(){
       // }
       return;  // don't let AI have a turn if the human won!
     }
-    //
 
     player = 'o';
     // // change player
@@ -220,11 +228,11 @@ $(document).ready(function(){
     if (checkPlayer()){
       // someone won the game!
       $('#win span').html(players[player].name);
-      $('#wins').html( players[player].name ).show();
-      $("div #turn").hide();
-
-      $( "div.im" ).fadeIn( 300 ).delay( 1500 ).fadeOut( 400 );
-      $( "div img.im" ).fadeIn( 300 ).delay( 2000 ).fadeOut( 400 );
+      // $('#wins').html( players[player].name ).show();
+      // $("div #turn").hide();
+      $( "div.im" ).html(players[player].name);
+      // $( "div.im" ).fadeIn( 300 ).delay( 1500 ).fadeOut( 400 );
+      // $( "div img.im" ).fadeIn( 300 ).delay( 2000 ).fadeOut( 400 );
       // add scores to the winner
       // if (player ==="x"){
       //   winX++;
@@ -239,23 +247,19 @@ $(document).ready(function(){
       winO++;
       players[player].score=winO;
       $('#win span').text("AI");
-      ("#wins").show();
-      $('#div wins').html ( $("#win").val());
+      // ("#wins").show();
+      // $('#div wins').html ( $("#win").val());
       $("#s2 span").html( players[player].score );
       // $("#s1 span").html(players[player].score);
       console.log("Your record of scores is "+ winO);
-
       $("#playAgain").show();
       // $('#playButton').prop('disabled', false);
       gameStart = false;
-
       //  }
       return;
-
     } else if(turnCount === 9){        // if( checkPlayer() )
       $('#win span').html("DRAW!");
     }
-
     turnCount += 1;
     console.log(turnCount);
     player = 'x'; // change back to HUMAN player because it is their turn again, after the AI is finished
@@ -288,6 +292,17 @@ $(document).ready(function(){
     $("#s2 span").html( players[player].score );
   });//ev
 
+  // function choosing image for each player
+  $("img").on('click',function(e){
+    console.log(this.id);
+    // players.x.image( $(this) );
+    players['x'].image = this.src;
+    // console.log(players['x'].image);
+    $(this).hide();
+    gameStart = true;
+  // for two players I need to do check like the check for the names image   x
+  });
+// for two players use on click to choose it event handlers+ toggle to switch
 // function playButton
   $('#playButton').on('click',function (event) {
     turnCount = 0;
@@ -326,12 +341,10 @@ $(document).ready(function(){
     $("#player2").val("");
     // $("#turn").val("");
     turnCount = 0;
-
     player  = 'x';
-
     $("#turn").hide();
-    players.x.name = '';
-    players.o.name = '';
+    players.x.image = '';
+    players.o.image = '';
     gameStart = false;
     $('#playButton').prop('disabled', false);
     $("#win span").html ( $("#win").val());
