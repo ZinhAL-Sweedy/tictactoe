@@ -97,7 +97,6 @@ $(document).ready(function(){
   });
   //cell checks if have event addClass for it
   $('.sq').on('click',function(event){
-
     if (!gameStart) {
       return;
     }

@@ -143,7 +143,7 @@ $(document).ready(function(){
     // multiple players
   });
   $('#v').on('click',function() {
-    // AI 
+    // AI
   });
 
   $('.sq').on('click',function(event){
@@ -171,6 +171,7 @@ $(document).ready(function(){
     board[boardIndex]= player.toLowerCase();
     // $(this).text(players[player].name);
     // check the winner
+
     turnCount += 1
     console.log(turnCount);
     // check if HUMAN player (always 'x') has won
@@ -194,16 +195,21 @@ $(document).ready(function(){
 
       // }
       // else {
-      //   winO++;
-      //   players[player].score=winO;
-      //   $("#s2 span").html( players[player].score );
-      //   // $("#s1 span").html(players[player].score);
-      //   console.log("Your record of scores is "+ winO);
-      //
-      //   $("#playAgain").show();
-      //   // $('#playButton').prop('disabled', false);
-      //   gameStart = false;
-      // }
+      $('#t').on('click',function() {
+        // multiple players
+        winO++;
+       //   players[player].score=winO;
+       //   $("#s2 span").html( players[player].score );
+       //   // $("#s1 span").html(players[player].score);
+       //   console.log("Your record of scores is "+ winO);
+       //
+       //   $("#playAgain").show();
+       //   // $('#playButton').prop('disabled', false);
+       //   gameStart = false;
+       // }
+      });
+
+
       return;  // don't let AI have a turn if the human won!
     }
 
