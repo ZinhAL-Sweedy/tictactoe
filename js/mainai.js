@@ -40,37 +40,47 @@ var turnCount = 0;
 
 
 // function to make a good move for the AI
-debugger;
 var playAIMove  = function () {
   // play in on of these squares if they are free
-  if ($('#4').text() === '') {
+  if ((board[4]) === null) {
     $('#' + 4).addClass('o').text('AI');
     board[4]= 'o';
-  } else if ($('#0').text()==='') {
+  } else if ((board[0]) === null) {
     $('#' + 0).addClass('o').text('AI');
     board[0]= 'o';
-  } else if ($('#2').text()==='') {
+  } else if (board[2] === null) {
     $('#' + 2).addClass('o').text('AI');
     board[2]= 'o';
-  } else if ($('#6').text()==='') {
+  } else if ($(board[6]) === null) {
     $('#' + 6).addClass('o').text('AI');
     board[6]= 'o';
-  } else if ($('#8').text()==='') {
+  } else if ($(board[8]) === null) {
     $('#' + 8).addClass('o').text('AI');
     board[8]= 'o';
-  } else if ($('#1').text()==='') {
+  } else if ($(board[1]) === null) {
     $('#' + 1).addClass('o').text('AI');
     board[1]= 'o';
-  } else if ($('#3').text()==='') {
+  } else if ($(board[3]) === null) {
     $('#' + 3).addClass('o').text('AI');
     board[3]= 'o';
-  } else if ($('#5').text()==='') {
+  } else if ($(board[5]) === null) {
     $('#' + 5).addClass('o').text('AI');
     board[5]= 'o';
-  } else if ($('#7').text()==='') {
+  } else if ($(board[7]) === null) {
     $('#' + 7).addClass('o').text('AI');
     board[7]= 'o';
+  }else if (board[8] === null) {
+    $('#' + 8).addClass('o').text('AI');
+    board[8]= 'o';
+  }else if ($(board[9]) === null) {
+    $('#' + 9).addClass('o').text('AI');
+    board[9]= 'o';
   }
+  // else if ($('#9').text()==='') {
+  //   $('#' + 9).addClass('o').text('AI');
+  //   board[9]= 'o';
+  // }
+
 };
 
 //FUNCTION CREATE RANDOM NUMBER
@@ -129,7 +139,6 @@ $(document).ready(function(){
     // var value_input = $("input[name*='xxxx']").val();
 
     // select.addClass(player.toLowerCase()).text(players[player].name);
-
     $(this).css({
       'background': 'url(' + players[player].image + ') no-repeat',
       'background-size': 'cover'
@@ -144,7 +153,8 @@ $(document).ready(function(){
     console.log(turnCount);
     // check if HUMAN player (always 'x') has won
     if (checkPlayer()){
-      $('#win span').html(players[player].name);
+      // $('#win span').html(players[player].name);
+      $('#win span').text("X");
       $("div #turn").hide();
       // $('#wins').html( players[player].name ).show();
       // $( "div.im" ).fadeIn( 300 ).delay( 1500 ).fadeOut( 400 );
@@ -295,6 +305,8 @@ $(document).ready(function(){
   // function choosing image for each player
   $("img").on('click',function(e){
     console.log(this.id);
+    var $selectedImage=this.id;
+    console.log($selectedImage);
     // players.x.image( $(this) );
     players['x'].image = this.src;
     // console.log(players['x'].image);
@@ -343,8 +355,14 @@ $(document).ready(function(){
     turnCount = 0;
     player  = 'x';
     $("#turn").hide();
-    players.x.image = '';
-    players.o.image = '';
+    $('selectedImage').show();
+    // players.x.image.val("");
+    //  $('td',.css({
+    //   'background': "",
+    //   'background-size': ""
+    // });
+    $('td').css('background','');
+    // players.o.image = null;
     gameStart = false;
     $('#playButton').prop('disabled', false);
     $("#win span").html ( $("#win").val());
