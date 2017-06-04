@@ -31,6 +31,7 @@ var winO =0;
 var gameStart= false;
 
 var turnCount = 0;
+var multiPlayerSelected = false;
 
 // START DEFAULT AS X
 // var playerTurn = "X";
@@ -141,9 +142,10 @@ $(document).ready(function(){
   });
   $('#t').on('click',function() {
     // multiple players
+    multiPlayerSelected = true;
   });
   $('#v').on('click',function() {
-    // AI
+    multiPlayerSelected = false;
   });
 
   $('.sq').on('click',function(event){
@@ -225,7 +227,8 @@ $(document).ready(function(){
 
 
     // AI TURN
-    playAIMove();
+    if (!multiPlayerSelected)    playAIMove();
+
 
     // for (i=0; i < 9; i++) {
     //   var random = randomNumber();
