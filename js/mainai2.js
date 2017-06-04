@@ -31,155 +31,13 @@ var winO =0;
 var gameStart= false;
 
 var turnCount = 0;
-var multiplayerSelected = false;
 
 // START DEFAULT AS X
 // var playerTurn = "X";
 // var computerTurn = "O";
 // var buttons = document.getElementById("board");
 //     console.log(buttons);
-// function multyplayer
-// function multyplayer(){
-//   $( "div#show" ).fadeIn( 300 ).delay( 1500 ).fadeOut( 1000 );
-//   // show the value who player turn
-//   $("turn").val("");
-//   //
-//   if( canSave ){
-//     // load saved game
-//     var savedGame = JSON.parse( localStorage.getItem('players') );
-//     if( savedGame !== null){
-//       players = savedGame;
-//
-//     }
-//   }
-// // function continue playing
-//   $('#cont').on('click',function (ev) {
-//     console.log('#cont click');
-//     $( "div#reply" ).fadeIn( 300 ).delay( 1500 ).fadeOut( 1000 );
-//     $("td").removeClass("x o").html('');
-//     board = [null, null, null, null, null, null, null, null, null];
-//     turnCount = 0;
-//     $("td").html("");
-//     gameStart = true;
-//     $("#s1 span").html( players[player].score );
-//     $("#s2 span").html( players[player].score );
-//
-//   });//ev
-// // function playButton
-//   $('#playButton').on('click',function (event) {
-//     console.log('PLAY clicked!');
-//     $("div#turn").show();
-//     $("div#turn").html("Player turn: " + $("#player1").val());
-//     // debugger
-//     players['x'].name  = $("#player1").val();
-//     players['o'].name  = $("#player2").val();
-//     // debugger;
-//     if (players['x'].name==='' || players['o'].name ===''){
-//       $( "div#show" ).fadeIn( 300 ).delay( 1500 ).fadeOut( 400 );
-//       return;
-//     } else if (players['x'].name=== players['o'].name ){
-//       $( "div#show" ).fadeIn( 300 ).delay( 1500 ).fadeOut( 400 );
-//       // gameStart=false;
-//       return;
-//     }
-//
-//     console.log(players[player].name);
-//     $(this).prop('disabled', true);
-//     gameStart = true;
-//     $("#p1 span").html(  $("#player1").val()   );
-//     $("#p2 span").html(  $("#player2").val()   );
-//     $("#s1 span").html("0");
-//     $("#s2 span").html("0");
-//   });
-//   //cell checks if have event addClass for it
-//   $('.sq').on('click',function(event){
-//     if (!gameStart) {
-//       return;
-//     }
-//     var select = $(this);
-//
-//     if (select.hasClass('x')|| select.hasClass('o')){
-//       return;
-//     }
-//
-//     var boardIndex = parseInt( this.id );
-//     // var value_input = $("input[name*='xxxx']").val();
-//     select.addClass(player.toLowerCase());
-//     // change cell content her
-//     board[boardIndex]= player.toLowerCase();
-//     $(this).text(players[player].name);
-//     // check the winner
-//     if (checkPlayer()){
-//       // someone won the game!
-//       $('#win span').html(players[player].name);
-//       $("div #turn").hide();
-//
-//       $( "div.im" ).fadeIn( 300 ).delay( 1500 ).fadeOut( 400 );
-//       // $( "div img.im" ).fadeIn( 300 ).delay( 2000 ).fadeOut( 400 );
-//       // add scores to the winner
-//       if (player ==="x"){
-//         winX++;
-//         players[player].score=winX;
-//         $("#s1 span").html(players[player].score);
-//         // $("#s2 span").html(players[player].score);
-//         console.log("Your record of scores is "+ players[player].name);
-//         $("#playAgain").show();
-//         gameStart = false;
-//       }else{
-//         winO++;
-//         players[player].score=winO;
-//         $("#s2 span").html( players[player].score );
-//         // $("#s1 span").html(players[player].score);
-//         console.log("Your record of scores is "+ winO);
-//         // alert("Your record of scores is "+ players[player].score);
-//         $("#playAgain").show();
-//         // $('#playButton').prop('disabled', false);
-//         gameStart = false;
-//         // return;
-//        }
-//     // set the info in database
-//     if( canSave ){
-//       localStorage.setItem( 'players', JSON.stringify(players) );
-//     }
-//   // check DRAW
-//   } else if(turnCount === 8){// if( checkPlayer() )
-//       $('#win span').html("DRAW!");
-//   }// else
-//      // change player
-//     if(player === "x"){
-//       player = "o";
-//       $("div#turn").html("Player turn: " + players[player].name);
-//
-//     } else{
-//       player = "x";
-//       $("div#turn").html("Player turn: " + players[player].name);
-//
-//     }
-//     turnCount += 1;// number of clicks in the board game
-//
-//   }); // $('.sq').on('click')
-//   // reset function
-//   $("#reset").on('click',function(event){
-//     $( "div#show" ).fadeIn( 300 ).delay( 2000 ).fadeOut( 1000 )
-//     $("td").html("");
-//     board = [null, null, null, null, null, null, null, null, null];
-//     $("td").removeClass("x o");
-//     $("#player1").val("");
-//     $("#player2").val("");
-//     // $("#turn").val("");
-//     $("#turn").hide();
-//     players.x.name = '';
-//     players.o.name = '';
-//     gameStart = false;
-//     $('#playButton').prop('disabled', false);
-//     $("#win span").html ( $("#win").val());
-//     $("#p1 span").html ( $("#p1").val());
-//     $("#p2 span").html ( $("#p2").val());
-//     $("#s1 span").html(   $("#s1").val()   );
-//     $("#s2 span").html(   $("#s2").val()   );
-//   });
-//
-// };
+
 
 // function to make a good move for the AI
 var playAIMove  = function () {
@@ -260,7 +118,7 @@ if ($(this).text() === "X" || $(this).text() === "O") {
   alert("Already clicked, choose another box");
   // return;
 } else {
-  //ADD TEXT TO BUTTON AI
+  //ADD TEXT TO BUTTON
   $(this).text(player);
 }
 
@@ -283,15 +141,11 @@ $(document).ready(function(){
   });
   $('#t').on('click',function() {
     // multiple players
-    multiplayerSelected = true;
-    // multyplayer();
   });
   $('#v').on('click',function() {
     // AI
-    multiplayerSelected = false;
-    // AIPlayer();
   });
-  function AIPlayer (){
+
   $('.sq').on('click',function(event){
 
     if (!gameStart) {
@@ -341,9 +195,9 @@ $(document).ready(function(){
 
       // }
       // else {
-      // $('#t').on('click',function() {
+      $('#t').on('click',function() {
         // multiple players
-        winO++;// dont neccassory here
+        winO++;
        //   players[player].score=winO;
        //   $("#s2 span").html( players[player].score );
        //   // $("#s1 span").html(players[player].score);
@@ -353,13 +207,13 @@ $(document).ready(function(){
        //   // $('#playButton').prop('disabled', false);
        //   gameStart = false;
        // }
-      // });
+      });
 
 
       return;  // don't let AI have a turn if the human won!
     }
 
-    player = 'o';// AI
+    player = 'o';
     // // change player
     // if(player === "x"){
     //  player = "o";
@@ -371,9 +225,8 @@ $(document).ready(function(){
 
 
     // AI TURN
-    if (! multiplayerSelected) {
     playAIMove();
-    }
+
     // for (i=0; i < 9; i++) {
     //   var random = randomNumber();
     //   if(board[random] === null) {
@@ -430,12 +283,8 @@ $(document).ready(function(){
       // }else{//
 
       winO++;
-      players[player].score=winO;// check the multiplayerSelected if false put text
-      if (!multiplayerSelected){
-          $('#win span').text("AI");
-      } else{
-          $('#win span').html(players[player].name);
-      }
+      players[player].score=winO;
+      $('#win span').text("AI");
       // ("#wins").show();
       // $('#div wins').html ( $("#win").val());
       $("#s2 span").html( players[player].score );
@@ -551,5 +400,5 @@ $(document).ready(function(){
     $("#s1 span").html(   $("#s1").val()   );
     $("#s2 span").html(   $("#s2").val()   );
   });
- };
+
 });//ready
