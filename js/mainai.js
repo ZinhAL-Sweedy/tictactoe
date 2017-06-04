@@ -92,15 +92,15 @@ var multiplayerSelected = false;
 //     $("#s2 span").html("0");
 //   });
 //   //cell checks if have event addClass for it
-function multyplayer(){
+function multiplayer(){
   $('.sq').on('click',function(event){
     if (!gameStart) {
       return;
     }
     var select = $(this);
 
-    if (select.hasClass('x')|| select.hasClass('o')){
-      return;
+    if (select.hasClass('x') || select.hasClass('o')){
+      console.log("select two imaages");
     }
     //
     // var boardIndex = parseInt( this.id );
@@ -126,7 +126,7 @@ function multyplayer(){
 
     turnCount += 1
     console.log(turnCount);
-    
+
     // check the winner
     if (checkPlayer()){
       // someone won the game!
@@ -304,7 +304,8 @@ $(document).ready(function(){
   $('#t').on('click',function() {
     // multiple players
     multiplayerSelected = true;
-    multyplayer();
+    multiplayer();
+    console.log(multiplayerSelected);
   });
   $('#v').on('click',function() {
     // AI
@@ -395,6 +396,9 @@ $(document).ready(function(){
     if (! multiplayerSelected) {
       $("#v").toggle();
       playAIMove();
+    }else {
+      $("#t").toggle();
+      multiplayer();
     }
     // for (i=0; i < 9; i++) {
     //   var random = randomNumber();
