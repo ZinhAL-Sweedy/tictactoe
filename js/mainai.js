@@ -372,6 +372,7 @@ $(document).ready(function(){
 
     // AI TURN
     if (! multiplayerSelected) {
+      $("#v").toggle();
     playAIMove();
     }
     // for (i=0; i < 9; i++) {
