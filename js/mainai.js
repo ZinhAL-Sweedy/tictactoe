@@ -93,6 +93,34 @@ var multiplayerSelected = false;
 //   });
 //   //cell checks if have event addClass for it
 function multiplayer(){
+
+  var playerCount = 0;
+
+  console.log('start multiplayer');
+
+  $("img").on('click',function(e){
+    console.log(this.id);
+    var $selectedImage1=this.id;
+    var $selectedImage2=this.id;
+    console.log($selectedImage1);
+    console.log($selectedImage2);
+    // players.x.image( $(this) );
+
+    if(playerCount === 0){
+      players['x'].image = this.src;
+    } else {
+      players['o'].image = this.src;
+    }
+
+    // console.log(players['x'].image);
+    $(this).hide();
+    gameStart = true;
+  // for two players I need to do check like the check for the names image   x
+  playerCount++;
+
+  });
+
+
   $('.sq').on('click',function(event){
     if (!gameStart) {
       return;
@@ -100,7 +128,8 @@ function multiplayer(){
     var select = $(this);
 
     if (select.hasClass('x') || select.hasClass('o')){
-      console.log("select two imaages");
+      // console.log("select two images");
+    alert("select two images");
     }
     //
     // var boardIndex = parseInt( this.id );
@@ -124,11 +153,12 @@ function multiplayer(){
     // $(this).text(players[player].name);
     // check the winner
 
-    turnCount += 1
+    // turnCount += 1
     console.log(turnCount);
 
     // check the winner
     if (checkPlayer()){
+      console.log('multiplayer winner!');
       // someone won the game!
       $('#win span').html(players[player].name);
       $("div #turn").hide();
@@ -136,9 +166,10 @@ function multiplayer(){
       $( "div.im" ).fadeIn( 300 ).delay( 1500 ).fadeOut( 400 );
       // $( "div img.im" ).fadeIn( 300 ).delay( 2000 ).fadeOut( 400 );
       // add scores to the winner
-      if (player ==="x"){
+      if (player === "x"){
         winX++;
         players[player].score=winX;
+        $('#win span').html("Player X ");
         $("#s1 span").html(players[player].score);
         // $("#s2 span").html(players[player].score);
         console.log("Your record of scores is "+ players[player].name);
@@ -148,6 +179,7 @@ function multiplayer(){
         winO++;
         players[player].score=winO;
         $("#s2 span").html( players[player].score );
+          $('#win span').html("Player O ");
         // $("#s1 span").html(players[player].score);
         console.log("Your record of scores is "+ winO);
         // alert("Your record of scores is "+ players[player].score);
@@ -161,7 +193,7 @@ function multiplayer(){
       localStorage.setItem( 'players', JSON.stringify(players) );
     }
   // check DRAW
-  } else if(turnCount === 8){// if( checkPlayer() )
+} else if(turnCount === 9){// if( checkPlayer() )
       $('#win span').html("DRAW!");
   }// else
      // change player
@@ -177,6 +209,8 @@ function multiplayer(){
     turnCount += 1;// number of clicks in the board game
 
   }); // $('.sq').on('click')
+  turnCount += 1;// number of clicks in the board game
+
 }// multiplalyer function
 //   // reset function
 //   $("#reset").on('click',function(event){
@@ -313,7 +347,9 @@ $(document).ready(function(){
     AIPlayer();
     console.log(multiplayerSelected);
   });
-  function AIPlayer (){
+
+
+  var AIPlayer = function(){
   $('.sq').on('click',function(event){
 
     if (!gameStart) {
@@ -377,7 +413,6 @@ $(document).ready(function(){
        // }
       // });
 
-
       return;  // don't let AI have a turn if the human won!
     }
 
@@ -393,6 +428,8 @@ $(document).ready(function(){
 
 
     // AI TURN
+    // playAIMove();
+
     if (! multiplayerSelected) {
       $("#v").toggle();
       playAIMove();
@@ -400,6 +437,7 @@ $(document).ready(function(){
       $("#t").toggle();
       multiplayer();
     }
+
     // for (i=0; i < 9; i++) {
     //   var random = randomNumber();
     //   if(board[random] === null) {
@@ -460,7 +498,7 @@ $(document).ready(function(){
       if (!multiplayerSelected){
           $('#win span').text("AI");
       } else{
-          $('#win span').html(players[player].name);
+          $('#win span').html("players[player].name");
       }
       // ("#wins").show();
       // $('#div wins').html ( $("#win").val());
@@ -548,34 +586,42 @@ $(document).ready(function(){
     $("#s2 span").html("0");
   });
 
-  // reset function
-  $("#reset").on('click',function(event){
-    $( "div#show" ).fadeIn( 300 ).delay( 2000 ).fadeOut( 1000 )
-    $("td").html("");
-    board = [null, null, null, null, null, null, null, null, null];
-    $("td").removeClass("x o");
-    $("#player1").val("");
-    $("#player2").val("");
-    // $("#turn").val("");
-    turnCount = 0;
-    player  = 'x';
-    $("#turn").hide();
-    $('selectedImage').show();
-    // players.x.image.val("");
-    //  $('td',.css({
-    //   'background': "",
-    //   'background-size': ""
-    // });
-    $('td').css('background','');
-    $(".s").hide();
-    // players.o.image = null;
-    gameStart = false;
-    $('#playButton').prop('disabled', false);
-    $("#win span").html ( $("#win").val());
-    $("#p1 span").html ( $("#p1").val());
-    $("#p2 span").html ( $("#p2").val());
-    $("#s1 span").html(   $("#s1").val()   );
-    $("#s2 span").html(   $("#s2").val()   );
-  });
+
  };
+ // reset function
+ $("#reset").on('click',function(event){
+   $( "div#show" ).fadeIn( 300 ).delay( 2000 ).fadeOut( 1000 )
+   $("td").html("");
+   board = [null, null, null, null, null, null, null, null, null];
+   $("td").removeClass("x o");
+   $("#player1").val("");
+   $("#player2").val("");
+   // $("#turn").val("");
+   turnCount = 0;
+   player  = 'x';
+   $("#turn").hide();
+   $('selectedImage1').show();
+   $('selectedImage2').show();
+   $( "#five" ).show();
+   $( "#one" ).show();
+   $( "#six" ).show();
+   $( "#seven" ).show();
+   $( "#eight" ).show();
+   $( "#nine" ).show();
+   // players.x.image.val("");
+   //  $('td',.css({
+   //   'background': "",
+   //   'background-size': ""
+   // });
+   $('td').css('background','');
+   $(".s").hide();
+   // players.o.image = null;
+   gameStart = false;
+   $('#playButton').prop('disabled', false);
+   $("#win span").html ( $("#win").val());
+   $("#p1 span").html ( $("#p1").val());
+   $("#p2 span").html ( $("#p2").val());
+   $("#s1 span").html(   $("#s1").val()   );
+   $("#s2 span").html(   $("#s2").val()   );
+ });
 });//ready

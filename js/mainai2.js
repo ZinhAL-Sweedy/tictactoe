@@ -383,7 +383,8 @@ $(document).ready(function(){
     turnCount = 0;
     player  = 'x';
     $("#turn").hide();
-    $('selectedImage').show();
+    $('selectedImage1').show();
+    $('selectedImage2').show();
     // players.x.image.val("");
     //  $('td',.css({
     //   'background': "",
